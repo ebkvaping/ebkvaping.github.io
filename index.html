@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page with Text Boxes and Layered Images</title>
+    <style>
+        body {
+            cursor: url("c.ico"), default;
+            margin: 0;
+            padding: 0;
+            background: url('backround.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            z-index: 2;
+            position: relative;
+        }
+
+        .textbox {
+            width: 80%;
+            max-width: 400px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            font-size: 16px;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .textbox p {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .image-container {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            width: 200px;
+            height: auto;
+        }
+
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .image-1 {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .image-2 {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            margin-bottom: 60px;
+        }
+
+        .colored-text span:nth-child(3n+1) {
+            color: rgb(0, 81, 255); /* Blue color */
+        }
+        
+        .colored-text span:nth-child(3n+2) {
+            color: green;
+        }
+        
+        .colored-text span:nth-child(3n) {
+            color: red;
+        }
+
+        .top-image {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 500px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="bladee.png" alt="Top Image" class="top-image">
+
+        <div class="textbox">
+            <p class="colored-text" id="text">
+                Vaping can hurt your lungs and get you addicted to nicotine. Don't let it take control of your health or your future. Stay smart, stay strong—say no to vaping.
+            </p>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="bad.gif" alt="Image 2" class="image-2">
+        <img src="fire.gif" alt="Image 1" class="image-1">
+    </div>
+
+    <script>
+        // JavaScript to wrap each letter in a span for coloring
+        function colorizeText() {
+            const textElement = document.getElementById('text');
+            const text = textElement.textContent;
+            textElement.innerHTML = text.split('').map(letter => `<span>${letter}</span>`).join('');
+        }
+
+        colorizeText();
+    </script>
+</body>
+</html>
